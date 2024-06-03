@@ -1,0 +1,10 @@
+// All in one .proto file, as same level messages
+syntax = "proto3";
+package mycompany.mooc;
+import "lecture.proto";
+
+message Course {
+    string name = 1;
+    repeated string authors = 2;
+    map<string, Lecture> lectures = 3;
+}

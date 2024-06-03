@@ -1,0 +1,32 @@
+// All in one .proto file, as same level messages
+
+syntax = "proto3";
+
+message Article {
+    string text = 1;
+}
+
+enum VideoType {
+    NONE = 0;
+    MP4 = 1;
+    MOV = 2;
+}
+
+message Video {
+    VideoType type = 1;
+    string url = 2;
+}
+
+message Lecture {
+    string name = 1;
+    oneof content {
+        Video video = 2;
+        Article article = 3;
+    }
+}
+
+message Course {
+    string name = 1;
+    repeated string authors = 2;
+    map<string, Lecture> lectures = 3;
+}
